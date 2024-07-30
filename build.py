@@ -7,7 +7,7 @@ print("Collecting sources...")
 sources = []
 for root, _, filenames in walk(curdir):
     for filename in filenames:
-        if filename.endswith(('.cpp', '.hpp', '.c', '.h')):
+        if filename.endswith(('.cpp')):
             source_path = join(root, filename)
             sources.append(join(root, filename))
             print(source_path)
@@ -19,7 +19,7 @@ CXX = "clang++"
 CXXFLAGS = f"-g -Wall -Werror -Wpedantic -std={STD}"
 out = "./build/debug/main"
 
-command = f"{CXX} {CXXFLAGS} -o {out} -Iinclude {sources}"
+command = f"{CXX} {CXXFLAGS} -o {out} -Isrc {sources}"
 
 print("Building...")
 makedirs(join(curdir, "build", "debug"), exist_ok=True)
